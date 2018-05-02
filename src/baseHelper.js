@@ -15,31 +15,23 @@ ajv.addKeyword('numberString', {
 });
 
 class BaseHelper {
-    constructor(url, currency1, currency2) {
-        this.url = url;
+
+    constructor(currency1, currency2) {
         this.currency1 = currency1;
         this.currency2 = currency2;
         this.pair = this._createCurrencyPair(currency1, currency2);
-    }
-
-    get exchange() {
-        return 'livecoin.net';
     }
 
     get schema() {
         return {};
     }
 
-    get uri() {
-        return 'exchange/order_book';
-    }
-
     _createCurrencyPair(currency1, currency2) {
-        return `${currency1}/${currency2}`;
+        return '';
     }
 
-    _createRequestUrl(fisrtCurrency) {
-        return `${this.url}/${this.uri}?currencyPair=${this.pair}`
+    _createRequestUrl() {
+        return '';
     }
 
     _validateResponce(responce) {

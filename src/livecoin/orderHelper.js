@@ -1,9 +1,9 @@
 const _ = require('lodash');
 
-const BaseHelper = require('./baseHelper');
+const ExchangeHelper = require('./exchangeHelper');
 const OrderModel = require('../db').OrderModel;
 
-class OrderHelper extends BaseHelper {
+class OrderHelper extends ExchangeHelper {
 
     get schema() {
         return {
@@ -63,11 +63,11 @@ class OrderHelper extends BaseHelper {
                 type: r.type,
                 date: new Date(obj.timestamp)
             });
-            // order.save().then(() => {
+            return order.save().then(() => {
 
-            // }, (err) => {
+            }, (err) => {
 
-            // });
+            });
         });
     }
 

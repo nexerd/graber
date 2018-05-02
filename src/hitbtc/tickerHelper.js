@@ -7,24 +7,28 @@ class TickerHelper extends ExchangeHelper {
             type: 'object',
             required: ['max_bid', 'min_ask', 'volume'],
             properties: {
-                max_bid: {
-                    type: 'number'
+                high: {
+                    type: 'string',
+                    numberString: true
                 },
-                min_ask: {
-                    type: 'number'
+                low: {
+                    type: 'string',
+                    numberString: true
                 },
                 volume: {
-                    type: 'number'
+                    type: 'string',
+                    numberString: true
                 },
                 last: {
-                    type: 'number'
+                    type: 'string',
+                    numberString: true
                 }
             }
         }
     }
 
     get uri() {
-        return 'exchange/ticker';
+        return 'ticker';
     }
 
     _processResponce(responce) {
@@ -35,15 +39,15 @@ class TickerHelper extends ExchangeHelper {
                 currency1: this.currency1,
                 currency2: this.currency2,
             },
-            low: obj.low,
-            high: obj.high,
-            volume: obj.volume,
+            maxBid: parseFloat(obj.high),
+            minAsk: parseFloat(obj.low),
+            volume: parseFloat(obj.volume),
         });
-        return ticker.save().then(() => {
+        // ticker.save().then(() => {
 
-        }, (err) => {
+        // }, (err) => {
 
-        });
+        // });
     }
 }
 

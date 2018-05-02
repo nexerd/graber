@@ -1,9 +1,9 @@
 const _ = require('lodash');
 
-const BaseHelper = require('./baseHelper');
+const ExchangeHelper = require('./exchangeHelper');
 const TradeModel = require('../db').TradeModel;
 
-class TradeHelper extends BaseHelper {
+class TradeHelper extends ExchangeHelper {
     get schema() {
         return {
             type: 'array',
@@ -47,12 +47,12 @@ class TradeHelper extends BaseHelper {
                 type: r.type.toLowerCase(),
                 date: new Date(r.time * 1000)
             });
-            // trade.save().then(() => {
-    
-            // }, (err) => {
-    
-            // });
-        });        
+            return trade.save().then(() => {
+
+            }, (err) => {
+
+            });
+        });
     }
 }
 

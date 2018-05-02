@@ -1,13 +1,16 @@
-const Graber = require('./src/livecoin/graber');
+const BaseGraber = require('./src/baseGraber');
+//const Graber = require('./src/hitbtc/graber');
 
-var graber = new Graber();
+// var grabers = BaseGraber.GetAllGrabers();
+
+var graber = BaseGraber.CreateLivecoinGraber();
 
 // graber.getOrders()
 // graber.getTickers()
-graber.getTrades()
-.then((t) => {
+graber.getTickers()
+// .then((t) => {
 
-})
-.catch((err) => {
-    throw err;
-});
+// })
+// .catch((err) => {
+//     throw err;
+// });
